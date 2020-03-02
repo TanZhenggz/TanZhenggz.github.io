@@ -10,7 +10,7 @@
   </title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   
-  <link rel="shortcut icon" href="/favicon.ico" />
+  <link rel="shortcut icon" href="/images/23.svg" />
   
   
 <link rel="stylesheet" href="/css/style.css">
@@ -164,17 +164,6 @@ print(name)</code></pre><h3><span id="表格测试">表格测试</span></h3><tab
     </div>
       <!-- copyright -->
       
-        <div class="declare">
-          <ul class="post-copyright">
-            <li>
-              <i class="ri-copyright-line"></i>
-              <strong>版权声明： </strong s>
-              本博客所有文章除特别声明外，均采用 <a href="https://www.apache.org/licenses/LICENSE-2.0.html" rel="external nofollow"
-                target="_blank">Apache License 2.0</a> 许可协议。转载请注明出处！
-            </li>
-          </ul>
-        </div>
-        
     <footer class="article-footer">
       
           
@@ -250,61 +239,35 @@ print(name)</code></pre><h3><span id="表格测试">表格测试</span></h3><tab
   
 
   
+
   
-<!-- valine评论 -->
-<div id="vcomments-box">
-    <div id="vcomments">
-    </div>
-</div>
-<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-<script src='https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
-<script>
-    new Valine({
-        el: '#vcomments',
-        notify: false,
-        verify: '',
-        app_id: '',
-        app_key: '',
-        path: window.location.pathname,
-        avatar: 'mp',
-        placeholder: '给我的文章加点评论吧~',
-        recordIP: true
-    });
-    const infoEle = document.querySelector('#vcomments .info');
-    if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
-        infoEle.childNodes.forEach(function (item) {
-            item.parentNode.removeChild(item);
-        });
-    }
+  
+<div class="gitalk" id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.5.0/dist/gitalk.css">
+
+
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.5.0/dist/gitalk.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.10.0/js/md5.min.js"></script>
+
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: '18d304041eb985951243',
+    clientSecret: '6e26b63332601e7b2a62de45e3c50a3c972d79e9',
+    repo: 'TanZhenggz.github.io',
+    owner: 'TanZhenggz',
+    admin: ['TanZhenggz'],
+    // id: location.pathname,      // Ensure uniqueness and length less than 50
+    id: md5(location.pathname),
+    distractionFreeMode: false,  // Facebook-like distraction free mode
+    pagerDirection: 'last'
+  })
+
+  gitalk.render('gitalk-container')
 </script>
-<style>
-    #vcomments-box {
-        padding: 5px 30px;
-    }
 
-    @media screen and (max-width: 800px) {
-        #vcomments-box {
-            padding: 5px 0px;
-        }
-    }
-
-    #vcomments-box #vcomments {
-        background-color: #fff;
-    }
-
-    .v .vlist .vcard .vh {
-        padding-right: 20px;
-    }
-
-    .v .vlist .vcard {
-        padding-left: 10px;
-    }
-</style>
-
-  
-
-  
-  
   
 
 </article>
@@ -345,7 +308,7 @@ print(name)</code></pre><h3><span id="表格测试">表格测试</span></h3><tab
 <nav class="navbar">
   
   <div class="logo">
-    <a href="/"><img src="/images/ayer-side.svg" alt="十年夜雨十年灯"></a>
+    <a href="/"><img src="/images/23.svg" alt="十年夜雨十年灯"></a>
   </div>
   
   <ul class="nav nav-main">
@@ -367,7 +330,7 @@ print(name)</code></pre><h3><span id="表格测试">表格测试</span></h3><tab
     </li>
     
     <li class="nav-item">
-      <a class="nav-item-link" href="/2019/about">关于我</a>
+      <a class="nav-item-link" href="/about">关于我</a>
     </li>
     
   </ul>
