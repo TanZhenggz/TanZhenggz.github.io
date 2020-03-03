@@ -5663,7 +5663,7 @@ button {
 .article-entry table th,
 .article-entry table td,
 .article-entry table {
-  border: 0.1rem #999 solid;
+  border: 0.1rem #999 none;
 }
 .article-entry table th,
 .article-entry table td {
