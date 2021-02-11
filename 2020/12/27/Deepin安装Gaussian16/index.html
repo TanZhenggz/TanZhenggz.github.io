@@ -99,7 +99,7 @@
 
       
       <h3><span id="deepin安装gaussian16">Deepin安装Gaussian16</span></h3><p>其实留着旧电脑的用处一是学一学Linux，二是把之前丢掉的计算和编程捡起来学一学。奈何适之化严重，总是发懒。之前把系统重装过一次之后，deepin终于变成了正常的社区版而不是之前的一堆BUG的开发版。<a id="more"></a>于是把一切弄好之后，把g16的安装包拷过去了，解压之后按<a href="http://sobereva.com/439" target="_blank" rel="noopener">Sob的方式</a>新建scratch文件夹、环境变量。但是奇怪的是，终端一直提示找不到路径。在网上搜索了一番，发现可能是Gaussian没有install. 这估计是安装包的锅。但是在终端下运行make install命令也没有用。想了想，install文件本质上应该只是一个shell脚本，于是用vs code打开看了一下，结果就看到了第一行，这文件是个CSH脚本，deepin应该是Ubuntu系默认的bash，于是安装了一个CSH，运行install文件，发现还是不行。这时想到会不会路径本身有问题，路径最后的g16不是文件夹路径而是文件路径，在Gaussian文件夹果然发现了一个“g16(副本)”的文件，将其改为（g16）问题就解决了。最后一步新建Default.Route文件就行了。所以写这个的目的在于防止忘记，以下是正确的安装步骤（仅仅针对我手上的这个安装包文件，别的可能按Sob的方式就行了，没这么多破事）。</p>
-<p>第一步，将暗装包解压至主目录下，用tar命令或是直接GUI–右键解压缩即可，压缩包有3.4G所以要点时间。</p>
+<p>第一步，将安装包解压至主目录下，用tar命令或是直接GUI–右键解压缩即可，压缩包有3.4G所以要点时间。</p>
 <p>第二步，安装CSH, 命令如下</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install CSH</span><br></pre></td></tr></table></figure>
 <p>第三步， 终端用CSH运行install文件</p>
@@ -183,6 +183,15 @@
   
   <nav class="article-nav">
     
+      <a href="/2021/02/10/%E8%B5%B0%E5%90%91%E8%99%9A%E6%97%A0%E7%9A%842020/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            走向虚无的2020
+          
+        </div>
+      </a>
+    
     
       <a href="/2020/10/11/%E5%91%A8%E6%97%A5%E7%9A%84%E9%9A%8F%E6%83%B3/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
@@ -259,7 +268,7 @@
     <ul class="list-inline">
       <li>
         &copy;
-        2020
+        2020-2021
         Tan Zheng
       </li>
       <li>
