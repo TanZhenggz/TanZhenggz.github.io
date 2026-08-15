@@ -41,7 +41,8 @@
           font-size: 1.6rem;
         }
       </style>
-    </head>
+    <link rel="alternate" href="/atom.xml" title="十年夜雨十年灯" type="application/atom+xml">
+</head>
   </html>
 </html>
 
@@ -87,7 +88,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">657</span>
+            <span class="post-count">659</span>
         </span>
     </span>
 
@@ -111,20 +112,20 @@
   
     <div class="article-entry" itemprop="articleBody">
        
-  <h3><span id="deepin安装gaussian16">Deepin安装Gaussian16</span></h3><p>其实留着旧电脑的用处一是学一学Linux，二是把之前丢掉的计算和编程捡起来学一学。奈何适之化严重，总是发懒。之前把系统重装过一次之后，deepin终于变成了正常的社区版而不是之前的一堆BUG的开发版。<a id="more"></a>于是把一切弄好之后，把g16的安装包拷过去了，解压之后按<a href="http://sobereva.com/439" target="_blank" rel="noopener">Sob的方式</a>新建scratch文件夹、环境变量。但是奇怪的是，终端一直提示找不到路径。在网上搜索了一番，发现可能是Gaussian没有install. 这估计是安装包的锅。但是在终端下运行make install命令也没有用。想了想，install文件本质上应该只是一个shell脚本，于是用vs code打开看了一下，结果就看到了第一行，这文件是个CSH脚本，deepin应该是Ubuntu系默认的bash，于是安装了一个CSH，运行install文件，发现还是不行。这时想到会不会路径本身有问题，路径最后的g16不是文件夹路径而是文件路径，在Gaussian文件夹果然发现了一个“g16(副本)”的文件，将其改为（g16）问题就解决了。最后一步新建Default.Route文件就行了。所以写这个的目的在于防止忘记，以下是正确的安装步骤（仅仅针对我手上的这个安装包文件，别的可能按Sob的方式就行了，没这么多破事）。</p>
+  <h3><span id="deepin安装gaussian16">Deepin安装Gaussian16</span></h3><p>其实留着旧电脑的用处一是学一学Linux，二是把之前丢掉的计算和编程捡起来学一学。奈何适之化严重，总是发懒。之前把系统重装过一次之后，deepin终于变成了正常的社区版而不是之前的一堆BUG的开发版。<span id="more"></span>于是把一切弄好之后，把g16的安装包拷过去了，解压之后按<a target="_blank" rel="noopener" href="http://sobereva.com/439">Sob的方式</a>新建scratch文件夹、环境变量。但是奇怪的是，终端一直提示找不到路径。在网上搜索了一番，发现可能是Gaussian没有install. 这估计是安装包的锅。但是在终端下运行make install命令也没有用。想了想，install文件本质上应该只是一个shell脚本，于是用vs code打开看了一下，结果就看到了第一行，这文件是个CSH脚本，deepin应该是Ubuntu系默认的bash，于是安装了一个CSH，运行install文件，发现还是不行。这时想到会不会路径本身有问题，路径最后的g16不是文件夹路径而是文件路径，在Gaussian文件夹果然发现了一个“g16(副本)”的文件，将其改为（g16）问题就解决了。最后一步新建Default.Route文件就行了。所以写这个的目的在于防止忘记，以下是正确的安装步骤（仅仅针对我手上的这个安装包文件，别的可能按Sob的方式就行了，没这么多破事）。</p>
 <p>第一步，将安装包解压至主目录下，用tar命令或是直接GUI–右键解压缩即可，压缩包有3.4G所以要点时间。</p>
 <p>第二步，安装CSH, 命令如下</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install CSH</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt install CSH</span><br></pre></td></tr></table></figure>
 <p>第三步， 终端用CSH运行install文件</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> g16</span><br><span class="line">sudo csh bsd/install</span><br><span class="line">Install completed successfully</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> g16</span><br><span class="line"><span class="built_in">sudo</span> csh bsd/install</span><br><span class="line">Install completed successfully</span><br></pre></td></tr></table></figure>
 
 <p>第四步，在g16主目录下检查是否有g16文件，这个文件貌似没有后缀名，是一个可执行文件。如果有，进行下一步，如果没有把g16副本改成g16</p>
 <p>第五步 建立scratch文件夹，添加环境变量，新建Default.Route，设置运行核数和内存。<br>一般在g16目录下新建scratch文件夹,在.bashrc文件内加入如下几行</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> GAUSS_EXEDIR=/home/ringo/g16</span><br><span class="line"><span class="built_in">export</span> G16ROOT=/home/ringo/g16</span><br><span class="line"><span class="built_in">export</span> GAUSS_SCRDIR=/home/ringo/g16/scratch</span><br><span class="line"><span class="built_in">export</span> LD_LIBRARY_PATH=<span class="variable">$LD_LIBRARY_PATH</span>:/<span class="variable">$G16ROOT</span></span><br><span class="line"><span class="built_in">source</span> /home/ringo/g16/bsd/g16.profile</span><br><span class="line"><span class="built_in">export</span> PATH=”<span class="variable">$PATH</span>:/home/ringo/g16/g16”</span><br><span class="line"><span class="comment">#改太多遍了也不知道是哪个起作用了qaq</span></span><br></pre></td></tr></table></figure>
 <p>Default.Route</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-M- 8GB</span><br><span class="line">-P- 4</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-M- 8GB</span><br><span class="line">-P- 4</span><br></pre></td></tr></table></figure>
 <p>第六步， 解压gview文件夹到g16下面，添加环境变量</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> GV_DIR=/home/ringo/g16/gv</span><br><span class="line"><span class="built_in">export</span> LIBPATH=/home/ringo/g16/gv</span><br><span class="line"><span class="built_in">export</span> LD_LIBRARY_PATH=<span class="variable">$LD_LIBRARY_PATH</span>:/home/ringo/g16/gv/lib</span><br><span class="line">PATH=<span class="variable">$PATH</span>:/home/ringo/g16/gv</span><br><span class="line"><span class="built_in">alias</span> gv=<span class="string">'gview.exe'</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> GV_DIR=/home/ringo/g16/gv</span><br><span class="line"><span class="built_in">export</span> LIBPATH=/home/ringo/g16/gv</span><br><span class="line"><span class="built_in">export</span> LD_LIBRARY_PATH=<span class="variable">$LD_LIBRARY_PATH</span>:/home/ringo/g16/gv/lib</span><br><span class="line">PATH=<span class="variable">$PATH</span>:/home/ringo/g16/gv</span><br><span class="line"><span class="built_in">alias</span> gv=<span class="string">&#x27;gview.exe&#x27;</span></span><br></pre></td></tr></table></figure>
 
  
       <!-- reward -->
